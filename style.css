@@ -1,0 +1,149 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fdfbf9;
+  color: #2e4a36;
+}
+
+header {
+  text-align: center;
+  background-color: #e6e0d4;
+  padding: 2rem 1rem;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #2e4a36;
+  margin-bottom: 0.3rem;
+}
+
+header p {
+  color: #4b5f4a;
+}
+
+/* HERO SECTION */
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 3rem 10%;
+  gap: 3rem;
+}
+
+.hero-text {
+  flex: 1 1 50%;
+  min-width: 300px;
+}
+
+.hero-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.hero-text ul {
+  margin-left: 1rem;
+}
+
+.hero-text li {
+  margin-bottom: 0.5rem;
+}
+
+.hero-image {
+  flex: 1 1 40%;
+  min-width: 250px;
+}
+
+.hero-image img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.whatsapp-button {
+  display: inline-block;
+  background-color: #4caf50;
+  color: white;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.whatsapp-button:hover {
+  background-color: #3e8e41;
+}
+
+/* SOBRE SECTION */
+.sobre-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 3rem 10%;
+  gap: 3rem;
+  background-color: #f7f4f0;
+}
+
+.sobre-text {
+  flex: 1 1 55%;
+  min-width: 300px;
+}
+
+.sobre-image {
+  flex: 1 1 35%;
+  min-width: 250px;
+}
+
+.sobre-image img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* DEPOIMENTOS */
+.depoimentos-section {
+  padding: 3rem 10%;
+  text-align: center;
+}
+
+.depoimentos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.depoimento {
+  background-color: #eef5ed;
+  padding: 1.5rem;
+  border-radius: 12px;
+  max-width: 300px;
+  font-style: italic;
+}
+
+.depoimento span {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #2e4a36;
+}
+
+/* FOOTER */
+footer {
+  background-color: #e6e0d4;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+footer p {
+  margin: 0.3rem 0;
+}
+
+@media (max-width: 768px) {
+  .hero-section, .sobre-section {
+    flex-direction: column;
+    text-align: center;
+  }
+}
