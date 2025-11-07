@@ -1,258 +1,107 @@
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #fdfbf9;
-  color: #2e4a36;
+/* Reset e variáveis */
+:root{
+  --bg: #fdfbf9;
+  --text: #2e4a36;
+  --accent-green: #4caf50;
+  --accent-green-dark: #3e8e41;
+  --muted: #6b7b6a;
+  --musgo: #e6efe3;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  margin:0; background:var(--bg); color:var(--text);
+  -webkit-font-smoothing:antialiased;
 }
 
-header {
-  position: relative;
-  text-align: center;
-  padding: 2rem 1rem;
-  background-color: #e6e0d4; /* fallback */
-  background-image: url(Foto\ Header.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: #2e4a36;
-  overflow: hidden;
+/* HEADER */
+header{
+  position:relative; text-align:center; padding:2.2rem 1rem;
+  background-image: url('Consultorio.jpg');
+  background-size:cover; background-position:center;
+  color:var(--text); overflow:hidden;
+}
+header::before{
+  content:""; position:absolute; inset:0;
+  background: rgba(230,224,212,0.62); pointer-events:none;
+}
+.header-content{position:relative; z-index:1}
+header h1{font-size:1.6rem;margin:0 0 .2rem}
+header p{margin:0;color:#485b49}
+
+/* NAV */
+.main-nav{position:relative; display:flex; align-items:center; justify-content:space-between; padding:0.5rem 8%;}
+.nav-brand{display:inline-flex; align-items:center; color:inherit; text-decoration:none}
+.nav-toggle{display:none; background:none;border:0;padding:6px;cursor:pointer}
+.nav-toggle .bar{width:20px;height:2px;background:currentColor;margin:3px 0;border-radius:2px;display:block}
+.nav-links{display:flex; gap:1rem; list-style:none; margin:0; padding:0; align-items:center}
+.nav-links a{color:inherit;text-decoration:none;padding:.25rem .5rem;border-radius:6px;font-weight:600}
+
+/* WHATSAPP BUTTON */
+.whatsapp-button{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;font-weight:700;color:#fff;background:var(--accent-green);padding:.65rem 1.1rem;border-radius:10px}
+.whatsapp-button:hover{background:var(--accent-green-dark)}
+.whatsapp-button.icon-only{width:44px;height:44px;padding:0;border-radius:50%;justify-content:center}
+.wpp-logo{height:1em;width:auto;display:inline-block;vertical-align:middle;margin-left:.25rem}
+
+/* HERO */
+.hero-section{display:flex;align-items:center;gap:2rem;padding:3rem 8%;max-width:1200px;margin:0 auto}
+.hero-text{flex:1 1 55%;min-width:260px}
+.hero-text h2{font-size:1.5rem;margin:0 0 .5rem}
+.hero-image{flex:0 0 360px;max-width:360px}
+.hero-image img{width:100%;border-radius:12px;display:block}
+
+/* SOBRE (imagem à esquerda, texto à direita) */
+.sobre-section{display:flex;align-items:center;gap:2rem;padding:3rem 8%;max-width:1200px;margin:1.5rem auto;background:#fff;border-radius:8px}
+.sobre-image{flex:0 0 320px}
+.sobre-image img{width:100%;height:auto;border-radius:12px;display:block}
+.sobre-text{flex:1 1 60%}
+
+/* DEPOIMENTOS / CARROSSEL */
+.depoimentos-section{background:var(--musgo);border-radius:14px;padding:2rem 8%;max-width:1200px;margin:2rem auto;box-shadow:0 8px 30px rgba(46,74,54,0.06)}
+.depoimentos-section h2{margin:0 0 .4rem}
+.depoimentos-section .muted{color:var(--muted);margin:0 0 1rem;font-size:.95rem}
+
+/* carousel layout */
+.carousel{display:flex;align-items:center;gap:18px}
+.carousel-viewport{overflow:hidden;width:100%}
+.carousel-track{display:flex;gap:24px;transition:transform 1.6s cubic-bezier(.2,.8,.2,1);will-change:transform;position:relative;padding-bottom:6px}
+.carousel-slide{background:linear-gradient(180deg,#fff 0,#fbfdfb 100%);border-radius:14px;padding:22px;min-width:320px;max-width:360px;flex:0 0 auto;box-shadow:0 20px 60px rgba(46,74,54,0.14);transition:transform .9s cubic-bezier(.2,.8,.2,1),box-shadow .9s}
+.carousel-slide h3{margin:0 0 .5rem;font-size:1.05rem}
+.carousel-slide p{margin:0;color:#445544;line-height:1.5;font-size:.98rem}
+.carousel-slide:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 36px 90px rgba(46,74,54,0.18)}
+
+/* buttons/dots */
+.carousel-btn{background:rgba(255,255,255,0.95);border:1px solid rgba(0,0,0,0.06);backdrop-filter:blur(4px);width:44px;height:44px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.3rem}
+.carousel-btn:disabled{opacity:.35;cursor:default}
+.carousel-dots{display:flex;gap:10px;justify-content:center;margin-top:14px}
+.carousel-dots .dot{width:12px;height:12px;border-radius:50%;background:rgba(0,0,0,0.15);border:0;cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,0.04);transition:transform .45s,background .45s}
+.carousel-dots .dot.active{background:var(--accent-green);transform:scale(1.06);box-shadow:0 6px 16px rgba(76,175,80,0.14)}
+
+/* responsive: 3 columns desktop, 2 medium, 1 mobile */
+@media (min-width:1000px){
+  .carousel-slide{min-width:calc((100% - 48px)/3);max-width:calc((100% - 48px)/3)}
+}
+@media (min-width:720px) and (max-width:999px){
+  .carousel-slide{min-width:calc((100% - 24px)/2);max-width:calc((100% - 24px)/2)}
+}
+@media (max-width:719px){
+  .hero-section{flex-direction:column;padding:2rem 6%}
+  .sobre-section{flex-direction:column;text-align:center}
+  .sobre-image{order:0;width:80%;max-width:360px}
+  .sobre-text{order:1}
+  .carousel-slide{min-width:100%;max-width:100%}
+  .nav-toggle{display:inline-block}
+  .nav-links{display:none}
+  .nav-links.open{display:flex;position:absolute;top:56px;right:6%;flex-direction:column;background:rgba(230,224,212,0.98);padding:.6rem;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.08)}
 }
 
-/* overlay translúcido sobre a imagem (altere a opacidade conforme necessário) */
-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(230,224,212,0.65); /* cor do overlay + opacidade */
-  pointer-events: none;
+/* accessibility: reduced motion */
+@media (prefers-reduced-motion:reduce){
+  .carousel-track,.carousel-slide{transition:none}
+  .whatsapp-button,.carousel-btn{transition:none}
 }
 
-/* garante que o conteúdo do header fique acima do overlay */
-header > * {
-  position: relative;
-  z-index: 1;
-}
-
-header h1 {
-  font-size: 2rem;
-  color: #2e4a36;
-  margin-bottom: 0.3rem;
-}
-
-header p {
-  color: #4b5f4a;
-}
-
-/* HERO SECTION */
-.hero-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 3rem 10%;
-  gap: 3rem;
-}
-
-.hero-text {
-  flex: 1 1 50%;
-  min-width: 300px;
-}
-
-.hero-text h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.hero-text ul {
-  margin-left: 1rem;
-}
-
-.hero-text li {
-  margin-bottom: 0.5rem;
-}
-
-.hero-image {
-  flex: 1 1 40%;
-  min-width: 250px;
-}
-
-.hero-image img {
-  width: 100%;
-  border-radius: 12px;
-}
-
-.whatsapp-button {
-  display: inline-block;
-  background-color: #4caf50;
-  color: white;
-  padding: 0.8rem 1.6rem;
-  border-radius: 8px;
-  text-decoration: none;
-  margin-top: 1rem;
-  font-weight: bold;
-}
-
-.whatsapp-button:hover {
-  background-color: #3e8e41;
-}
-
-/* SOBRE SECTION */
-.sobre-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 3rem 10%;
-  gap: 3rem;
-  background-color: #f7f4f0;
-}
-
-.sobre-text {
-  flex: 1 1 55%;
-  min-width: 300px;
-}
-
-.sobre-image {
-  flex: 1 1 35%;
-  min-width: 250px;
-}
-
-.sobre-image img {
-  width: 100%;
-  border-radius: 12px;
-}
-
-/* DEPOIMENTOS */
-.depoimentos-section {
-  padding: 3rem 10%;
-  text-align: center;
-}
-
-.depoimentos-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.depoimento {
-  background-color: #eef5ed;
-  padding: 1.5rem;
-  border-radius: 12px;
-  max-width: 300px;
-  font-style: italic;
-}
-
-.depoimento span {
-  display: block;
-  margin-top: 1rem;
-  font-weight: bold;
-  color: #2e4a36;
-}
-
-/* FOOTER */
-footer {
-  background-color: #e6e0d4;
-  text-align: center;
-  padding: 2rem 1rem;
-}
-
-footer p {
-  margin: 0.3rem 0;
-}
-
-/* Navegação (inserida sem alterar cores/tamanhos do site) */
-.main-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 0.25rem 10%; /* usa mesma largura lateral do layout */
-  background: transparent; /* não altera cor do header */
-  color: inherit;
-  font-size: 0.95rem;
-}
-
-.nav-brand a {
-  text-decoration: none;
-  color: inherit;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.nav-links {
-  display: flex;
-  gap: 1rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  align-items: center;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: inherit;
-  padding: 0.25rem 0.5rem;
-  border-radius: 6px;
-  font-weight: 600;
-}
-
-/* botão hamburger (visível apenas em telas pequenas) */
-.nav-toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  padding: 8px;
-  cursor: pointer;
-  color: inherit;
-}
-.nav-toggle .bar {
-  display: block;
-  width: 20px;
-  height: 2px;
-  background: currentColor;
-  margin: 3px 0;
-  border-radius: 2px;
-  transition: transform .18s ease, opacity .12s ease;
-}
-.nav-toggle[aria-expanded="true"] .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-.nav-toggle[aria-expanded="true"] .bar:nth-child(2) { opacity: 0; }
-.nav-toggle[aria-expanded="true"] .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-
-/* Mobile: transforma links em dropdown sobreposto sem alterar o resto */
-@media (max-width: 768px) {
-  .main-nav { padding: 0.25rem 6%; }
-
-  .nav-toggle { display: inline-block; }
-
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: calc(100% + 8px);
-    right: 6%;
-    flex-direction: column;
-    gap: 0.25rem;
-    padding: 0.5rem;
-    border-radius: 10px;
-    min-width: 180px;
-    /* cor de fundo leve alinhada com o header (não altera esquema geral) */
-    background: rgba(230,224,212,0.95);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  }
-
-  .nav-links.open { display: flex; }
-
-  .nav-links a { padding: 0.6rem 0.8rem; display: block; color: inherit; }
-
-  /* evita que menu empurre o conteúdo ao abrir */
-  .main-nav { position: relative; z-index: 1000; }
-}
-
-@media (max-width: 768px) {
-  .hero-section, .sobre-section {
-    flex-direction: column;
-    text-align: center;
-  }
-}
+/* footer */
+footer{background:#e6e0d4;text-align:center;padding:2rem 1rem;margin-top:2rem}
+footer p{margin:.35rem 0}
