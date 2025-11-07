@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thaysa Figueiredo da Cruz | Psicóloga</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <!-- Barra de navegação adicionada (mantém cores/tamanhos existentes) -->
+    <nav class="main-nav" role="navigation" aria-label="Navegação principal">
+      <div class="nav-brand">
+        <a href="https://www.instagram.com/thaysacruz.psi?igsh=MTdiNjNuM25sYXEwdQ==" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram de Thaysa">
+          <!-- ícone Instagram (inline SVG, preserva cor/tamanho via currentColor) -->
+          <svg class="instagram-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <circle cx="17.5" cy="6.5" r="0.5"></circle>
+          </svg>
+        </a>
+      </div>
+
+      <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Abrir menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <ul id="primary-navigation" class="nav-links">
+        <li><a href="#home">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#contato" class="whatsapp-button">Contato</a></li>
+      </ul>
+    </nav>
+
+    <h1>Thaysa Figueiredo da Cruz</h1>
+    <p>Psicóloga | Atendimento Online e Presencial</p>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="hero-text">
+      <h2>Sinta-se leve de novo com apoio psicológico profissional</h2>
+      <p>Atendimento individual, presencial e online. Primeira sessão via WhatsApp, agende facilmente.</p>
+      <h3>Especialidades</h3>
+      <ul>
+        <li>Ansiedade e estresse</li>
+        <li>Autoestima e autoconhecimento</li>
+        <li>Relacionamentos e dinâmicas familiares</li>
+        <li>Direção de carreira e propósito</li>
+      </ul>
+      <a href="https://wa.me/5511990242133" target="_blank" class="whatsapp-button">Agendar sessão</a>
+    </div>
+
+    <div class="hero-image">
+      <img src="Consultorio.jpg" alt="Consultório da Thaysa">
+    </div>
+  </section>
+
+  <!-- Sobre Thaysa -->
+  <section id="sobre" class="sobre-section">
+    <div class="sobre-text">
+      <h2>Sobre Thaysa</h2>
+      <p>Sou psicóloga com foco em proporcionar acolhimento e escuta ativa. Meu propósito é ajudar cada pessoa a compreender suas emoções, fortalecer a autoestima e desenvolver estratégias para uma vida mais equilibrada e saudável.</p>
+      <p>Atendo adolescentes e adultos, tanto presencialmente quanto online, em um ambiente seguro e empático.</p>
+    </div>
+
+    <div class="sobre-image">
+      <img src="Foto Thaysa.jpg" alt="Thaysa Figueiredo da Cruz">
+    </div>
+  </section>
+
+  <!-- Depoimentos -->
+  <section id="depoimentos" class="depoimentos-section">
+    <h2>Depoimentos</h2>
+    <div class="depoimentos-container">
+      <div class="depoimento">
+        <p>“A Thaysa me ajudou a entender e lidar com minha ansiedade de uma forma leve e acolhedora"</p>
+        <span>— Mariana S.</span>
+      </div>
+      <div class="depoimento">
+        <p>“Profissional incrível, acolhedora e muito atenta aos detalhes. Recomendo de olhos fechados.”</p>
+        <span>— Gláucia</span>
+      </div>  
+      <div class="depoimento">
+        <p>“As sessões com a Thaysa foram transformadoras. Hoje me sinto mais confiante e tranquila.”</p>
+        <span>— Ana P.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer id="contato">
+    <a href="https://wa.me/5511990242133" target="_blank" class="whatsapp-button">Fale comigo no WhatsApp</a>
+    <p>E-mail: Thaysacruz.psi@gmail.com</p>
+    <p>&copy; 2025 Thaysa Figueiredo da Cruz - Todos os direitos reservados</p>
+  </footer>
+
+  <!-- JS do menu hamburguer (mantém comportamento simples e acessível) -->
+  <script>
+    (function () {
+      const btn = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('primary-navigation');
+
+      if (!btn || !nav) return;
+
+      btn.addEventListener('click', function () {
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+      });
+
+      // fecha o menu ao clicar em link (mobile)
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function () {
+          if (nav.classList.contains('open')) {
+            nav.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+
+      // fecha ao pressionar Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
